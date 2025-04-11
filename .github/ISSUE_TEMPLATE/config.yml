@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: FormMasterPro Community Support
+    url: https://github.com/haroldmei/formmasterpro.github.io/discussions
+    about: Please ask and answer questions here.
+  - name: FormMasterPro Documentation
+    url: https://www.formmasterpro.com/docs.html
+    about: Check our documentation for answers to common questions.

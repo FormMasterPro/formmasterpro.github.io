@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of ABC Application Form - Personal Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <style>
+        body { padding: 20px; }
+        h2 { margin-top: 2rem; color: #375f9d; }
+        h3 { margin-top: 1.5rem; color: #5a7cb6; }
+        .test-section { border: 1px solid #dee2e6; border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+        .form-section { margin-bottom: 30px; }
+        .custom-form-group { margin-bottom: 15px; }
+        .custom-label { font-weight: 600; }
+        .custom-framework-1 { background-color: #f8f9fa; padding: 15px; border-radius: 5px; }
+        .custom-framework-2 { background-color: #e9ecef; padding: 15px; border-radius: 3px; }
+        .ref-number { background: #eee; padding: 3px 8px; border-radius: 3px; margin-right: 5px; font-family: monospace; }
+        
+        /* Fix for Chosen.js dropdown width */
+        .chosen-container {
+            min-width: 250px !important;
+            width: 100% !important;
+        }
+        .chosen-container-single .chosen-single {
+            height: 38px;
+            line-height: 36px;
+            background: #fff;
+        }
+        .chosen-container-active.chosen-with-drop .chosen-single {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .chosen-container .chosen-drop {
+            width: 100% !important;
+            border-color: #80bdff;
+        }
+        /* Ensure dropdowns in custom frameworks have proper dimensions */
+        .sv-col-md-4 .chosen-container {
+            width: 100% !important;
+        }
+        
+        /* Progress bar styles */
+        .form-progress {
+            margin: 20px 0 40px;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        .form-progress:before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+            z-index: 0;
+        }
+        .form-progress-step {
+            position: relative;
+            z-index: 1;
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 26px;
+            font-weight: bold;
+            color: #ccc;
+        }
+        .form-progress-step.active {
+            border-color: #375f9d;
+            color: #375f9d;
+            background: #e8f0fc;
+        }
+        .form-progress-step.completed {
+            border-color: #375f9d;
+            background: #375f9d;
+            color: #fff;
+        }
+        .form-progress-label {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            color: #666;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        
+        .form-navigation {
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-navigation-left {
+            text-align: left;
+        }
+        .form-navigation-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">University of ABC Application Form</h1>
+        <p class="lead">This form collects your information for admission to the Bachelor of Commerce program.</p>
+
+        <div class="alert alert-info">
+            Please complete all sections. Mandatory fields are marked with an asterisk (*).
+        </div>
+        
+        <!-- Multi-step form progress indicator -->
+        <ul class="form-progress">
+            <li class="form-progress-step active" id="step-1">
+                1
+                <span class="form-progress-label">Personal Details</span>
+            </li>
+            <li class="form-progress-step" id="step-2">
+                2
+                <span class="form-progress-label">Additional Information</span>
+            </li>
+            <li class="form-progress-step" id="step-3">
+                3
+                <span class="form-progress-label">Academic Details</span>
+            </li>
+        </ul>
+
+        <!-- PAGE 1: PERSONAL INFORMATION -->
+        <div id="page-1">
+            <!-- SECTION 1: PERSONAL INFORMATION -->
+            <div class="test-section">
+                <h2>1. Your Personal Information</h2>
+                <form class="form-section">
+                    <h3>1.1 Your Details</h3>
+                    <!-- Regular text input -->
+                    <div class="form-group">
+                        <label for="basic-text">Given Name(s) *</label>
+                        <input type="text" class="form-control" id="basic-text" name="basic-text" required>
+                    </div>
+
+                    <!-- Text with placeholder -->
+                    <div class="form-group">
+                        <label for="placeholder-text">Family Name *</label>
+                        <input type="text" class="form-control" id="placeholder-text" name="placeholder-text" placeholder="Enter your family name" required>
+                    </div>
+
+                    <!-- Text with default value -->
+                    <div class="form-group">
+                        <label for="default-text">Known as Name</label>
+                        <input type="text" class="form-control" id="default-text" name="default-text" value="XXX">
+                    </div>
+
+                    <!-- Required text field -->
+                    <div class="form-group">
+                        <label for="required-text">Official Name *</label>
+                        <input type="text" class="form-control" id="required-text" name="required-text" required>
+                        <small class="form-text text-muted">Your official name appears on your passport, birth certificate or change of name certificate.</small>
+                    </div>
+
+                    <!-- Disabled text field -->
+                    <div class="form-group">
+                        <label for="disabled-text">Previous Name (if applicable)</label>
+                        <input type="text" class="form-control" id="disabled-text" name="disabled-text" disabled value="-">
+                    </div>
+
+                    <!-- Readonly text field -->
+                    <div class="form-group">
+                        <label for="readonly-text">Application Reference Number</label>
+                        <input type="text" class="form-control" id="readonly-text" name="readonly-text" readonly value="XXXXXX">
+                    </div>
+
+                    <h3>1.2 Contact Details</h3>
+                    <!-- Email input -->
+                    <div class="form-group">
+                        <label for="email-input">Current Email *</label>
+                        <input type="email" class="form-control" id="email-input" name="email-input" placeholder="email@example.com" value="xxx@xxx.com" required>
+                        <small class="form-text text-muted">Please provide your preferred email address so we can contact you.</small>
+                    </div>
+
+                    <!-- Number input -->
+                    <div class="form-group">
+                        <label for="number-input">Telephone *</label>
+                        <input type="tel" class="form-control" id="number-input" name="number-input" value="xxxxxxxxx" required>
+                        <small class="form-text text-muted">Include country code and area code.</small>
+                    </div>
+
+                    <!-- Date input -->
+                    <div class="form-group">
+                        <label for="date-input">Date of Birth (dd/mm/yyyy) *</label>
+                        <input type="date" class="form-control" id="date-input" name="date-input" value="2007-04-03" required>
+                    </div>
+
+                    <!-- Date of arrival -->
+                    <div class="form-group">
+                        <label for="time-input">Date of First Arrival in Australia</label>
+                        <input type="date" class="form-control" id="time-input" name="time-input" value="2021-04-01">
+                        <small class="form-text text-muted">An estimate of the day and month of arrival in Australia is acceptable.</small>
+                    </div>
+
+                    <!-- File input -->
+                    <div class="form-group">
+                        <label for="file-input">Proof of Identity and Residency Status</label>
+                        <input type="file" class="form-control-file" id="file-input" name="file-input">
+                        <small class="form-text text-muted">Maximum file size is 10MB. Upload passport identification page, visa page, or citizenship certificate.</small>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SECTION 2: ADDRESSES -->
+            <div class="test-section">
+                <h2>2. Address Information</h2>
+                <form class="form-section">
+                    <h3>2.1 Your Residential Address</h3>
+                    <!-- Basic textarea -->
+                    <div class="form-group">
+                        <label for="basic-textarea">Address Line 1 *</label>
+                        <textarea class="form-control" id="basic-textarea" name="basic-textarea" rows="2">XXX ROAD, SHAJING</textarea>
+                    </div>
+
+                    <!-- Textarea with placeholder -->
+                    <div class="form-group">
+                        <label for="placeholder-textarea">Address Line 2</label>
+                        <textarea class="form-control" id="placeholder-textarea" name="placeholder-textarea" rows="2" placeholder="Enter additional address details">XXX DISTRICT</textarea>
+                    </div>
+
+                    <!-- Textarea with default text -->
+                    <div class="form-group">
+                        <label for="default-textarea">Address Line 3</label>
+                        <textarea class="form-control" id="default-textarea" name="default-textarea" rows="2">XXX CITY, XXX PROVINCE</textarea>
+                    </div>
+
+                    <!-- Town/City field -->
+                    <div class="form-group">
+                        <label for="required-textarea">Town, City or Suburb *</label>
+                        <textarea class="form-control" id="required-textarea" name="required-textarea" rows="1" required>XXX</textarea>
+                    </div>
+
+                    <h3>2.2 Same as Permanent Address</h3>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="same-address" name="same-address" checked>
+                            <label class="form-check-label" for="same-address">Please check if your permanent address is the same as your residential address</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SECTION 3: SELECT DROPDOWNS -->
+            <div class="test-section">
+                <h2>3. Personal Details</h2>
+                <form class="form-section">
+                    <h3>3.1 Title and Citizenship</h3>
+                    <!-- Basic select -->
+                    <div class="form-group">
+                        <label for="basic-select">Title *</label>
+                        <select class="form-control" id="basic-select" name="basic-select" required>
+                            <option value="">-- Select --</option>
+                            <option value="MR">Mr</option>
+                            <option value="MRS">Mrs</option>
+                            <option value="MISS">Miss</option>
+                            <option value="MS">Ms</option>
+                            <option value="DR">Dr</option>
+                            <option value="PROF">Professor</option>
+                            <option value="ASSOCPROF">Associate Professor</option>
+                            <option value="SIR">Sir</option>
+                            <option value="MX">Mx</option>
+                        </select>
+                    </div>
+
+                    <!-- Select with default value -->
+                    <div class="form-group">
+                        <label for="default-select">Country of Birth *</label>
+                        <select class="form-control" id="default-select" name="default-select" required>
+                            <option value="">-- Select --</option>
+                            <option value="CHN" selected>China</option>
+                            <option value="AUS">Australia</option>
+                            <option value="USA">United States</option>
+                            <option value="GBR">United Kingdom</option>
+                            <option value="CAN">Canada</option>
+                        </select>
+                    </div>
+
+                    <!-- Select with optgroups -->
+                    <div class="form-group">
+                        <label for="optgroup-select">Visa Type *</label>
+                        <select class="form-control" id="optgroup-select" name="optgroup-select" required>
+                            <option value="">-- Select --</option>
+                            <optgroup label="Student Visas">
+                                <option value="500">Student visa (subclass 500)</option>
+                                <option value="570">Independent ELICOS visa (subclass 570)</option>
+                                <option value="573">Higher Education visa (subclass 573)</option>
+                            </optgroup>
+                            <optgroup label="Work Visas">
+                                <option value="482">Temporary Skill Shortage visa (subclass 482)</option>
+                                <option value="485">Temporary Graduate visa (subclass 485)</option>
+                            </optgroup>
+                            <optgroup label="Other">
+                                <option value="309">Partner visa (subclass 309)</option>
+                                <option value="600">Visitor visa (subclass 600)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Multiple select -->
+                    <div class="form-group">
+                        <label for="multiple-select">Languages Spoken (select all that apply)</label>
+                        <select multiple class="form-control" id="multiple-select" name="multiple-select">
+                            <option value="ENG">English</option>
+                            <option value="CHN" selected>Chinese (Mandarin)</option>
+                            <option value="CHI">Chinese (Cantonese)</option>
+                            <option value="FRA">French</option>
+                            <option value="SPA">Spanish</option>
+                            <option value="ARA">Arabic</option>
+                        </select>
+                    </div>
+
+                    <h3>3.2 Enhanced Title Select</h3>
+                    <!-- Chosen.js implementation -->
+                    <div class="form-group">
+                        <label for="chosen-select">Preferred Title *</label>
+                        <select id="chosen-select" name="chosen-select" class="chosen-select form-control">
+                            <option value="">-- Select --</option>
+                            <option value="MR" selected>Mr</option>
+                            <option value="MRS">Mrs</option>
+                            <option value="MISS">Miss</option>
+                            <option value="MS">Ms</option>
+                            <option value="DR">Dr</option>
+                            <option value="PROF">Professor</option>
+                        </select>
+                    </div>
+
+                    <h3>3.3 Program Selection</h3>
+                    <!-- Select2 implementation -->
+                    <div class="form-group">
+                        <label for="select2-example">Choose Your Program *</label>
+                        <select id="select2-example" name="select2-example" class="select2-control">
+                            <option value="">-- Select --</option>
+                            <option value="BCOM" selected>Bachelor of Commerce</option>
+                            <option value="BIT">Bachelor of Information Technology</option>
+                            <option value="BART">Bachelor of Arts</option>
+                            <option value="BSCI">Bachelor of Science</option>
+                            <option value="BLAW">Bachelor of Laws</option>
+                        </select>
+                    </div>
+
+                    <div class="sv-form-group" id="date-of-arrival-in-australia">
+                        <label for="IPQ_APONEND" class="sv-col-md-3 sv-control-label">Date of first arrival in Australia (dd/mm/yyyy)
+                            *</label>
+                        <div class="sv-col-md-4">
+                            <div class="sv-input-group">
+                                <input name="IPQ_APONEND" id="IPQ_APONEND" class="sv-form-control hasDatepicker" type="text"
+                                    maxlength="35" value="01/Apr/2023">
+                                <span class="sv-input-group-addon"><img class="ui-datepicker-trigger" src="./assets/si_calendar.gif"
+                                        alt="..." title="..." role="button" tabindex="0"></span>
+                            </div>
+                            <small>An estimate of the day and month of arrival in Australia is acceptable. Please ensure that the year
+                                is correct.</small>
+                        </div>
+                    </div>
+                    <div class="sv-form-group" id="citizenship-or-residency-status">
+                        <label for="IPQ_APONLNID" class="sv-col-md-3 sv-control-label">What is your citizenship/residency status?
+                            *</label>
+                        <div class="sv-col-md-4">
+                            <select id="IPQ_APONLNID" name="IPQ_APONLNID" class="" style="display: none;">
+                                <option value="">-- Select --</option>
+                                <option value="4">Student visa or other temporary visa</option>
+                                <option value="5">Other (non resident)</option>
+                            </select>
+                            <div class="chosen-container chosen-container-single chosen-with-drop chosen-container-active" title=""
+                                id="IPQ_APONLNID_chosen" tabindex="-1" style="width: 100%;"><a class="chosen-single">
+                                    <span id="IPQ_APONLNID_chosenspan">Student visa or other temporary visa</span>
+                                    <div><b></b></div>
+                                </a>
+                                <div class="chosen-drop">
+                                    <div class="chosen-search">
+                                        <input class="chosen-search-input" type="text" autocomplete="off"
+                                            title="Student visa or other temporary visa" aria-owns="IPQ_APONLNID_ul" tabindex="0"
+                                            aria-autocomplete="list" aria-label="What is your citizenship/residency status? * search"
+                                            aria-activedescendant="IPQ_APONLNID6">
+                                    </div>
+                                    <ul class="chosen-results" role="listbox" tabindex="-1" aria-expanded="true" id="IPQ_APONLNID_ul"
+                                        aria-busy="true" aria-label="What is your citizenship/residency status? * options">
+                                        <li class="active-result" data-option-array-index="0" id="IPQ_APONLNID0" role="option"
+                                            tabindex="-1">-- Select --</li>
+                                        <li class="active-result result-selected highlighted" data-option-array-index="6"
+                                            id="IPQ_APONLNID6" role="option" tabindex="-1">Student visa or other temporary visa</li>
+                                        <li class="active-result" data-option-array-index="7" id="IPQ_APONLNID7" role="option"
+                                            tabindex="-1">Other (non resident)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <script>
+                                // Set the initial value of IPQ_APONLNID
+                                $("#IPQ_APONLNID").val("4");
+                                sits_chosen_widget("#IPQ_APONLNID", {});
+                                $('#IPQ_APONLNID').change(check_IPQ_APONLNID);
+                            </script>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Page 1 Navigation Buttons -->
+            <div class="form-navigation">
+                <div class="form-navigation-left">
+                    <!-- No previous button on first page -->
+                </div>
+                <div class="form-navigation-right">
+                    <a href="collections-page2.html" class="btn btn-primary">Next</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to initialize the enhanced selects -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        // Initialize enhanced selects after page load
+        $(document).ready(function() {
+            // Initialize Chosen.js with proper width configuration
+            $('.chosen-select').chosen({
+                width: '100%',
+                disable_search_threshold: 10
+            });
+            
+            // Initialize our custom framework select with Chosen
+            $('#IPR_TITL').chosen({
+                width: '100%',
+                disable_search_threshold: 10
+            });
+            
+            // Initialize Select2
+            $('.select2-control').select2({
+                width: '100%',
+                dropdownAutoWidth: true
+            });
+            
+            // Set some default values
+            $('#chosen-select').val('MR').trigger('chosen:updated');
+            $('#select2-example').val('BCOM').trigger('change');
+        });
+    </script>
+</body>
+</html>

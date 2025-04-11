@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormMasterPro Documentation: AI-Powered Form Filling Browser Extension</title>
+  <meta name="description" content="Complete guide to installing, configuring and using FormMasterPro - the AI-powered browser extension that automatically fills online forms with your data.">
+  <meta name="keywords" content="form filling, browser extension, AI form automation, auto-fill forms, data extraction">
+  <meta name="author" content="FormMasterPro">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.formmasterpro.com/docs.html">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:title" content="FormMasterPro Documentation - AI Form Filling Browser Extension">
+  <meta property="og:description" content="Complete guide to using FormMasterPro - fill any online form automatically with AI-powered technology.">
+  <meta property="og:url" content="https://www.formmasterpro.com/docs.html">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://www.formmasterpro.com/assets/images/og-image.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FormMasterPro Documentation - AI Form Filling Browser Extension">
+  <meta name="twitter:description" content="Complete guide to using FormMasterPro - fill any online form automatically with AI-powered technology.">
+  <meta name="twitter:image" content="https://www.formmasterpro.com/assets/images/twitter-image.png">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "FormMasterPro",
+    "applicationCategory": "BrowserApplication",
+    "operatingSystem": "Windows, macOS, Linux (Chrome-based browsers)",
+    "offers": {
+      "@type": "Offer",
+      "price": "0.00",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "description": "AI-powered browser extension that automatically fills online forms with your data from PDF and DOCX documents."
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container header-content">
+      <a href="index.html" class="logo">FormMasterPro</a>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="docs.html" aria-current="page">Documentation</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>FormMasterPro Documentation</h1>
+      <p>Learn how to install, configure, and use FormMasterPro with our comprehensive documentation.</p>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="container">
+      <nav aria-label="Table of Contents" class="toc">
+        <ul>
+          <li><a href="#installation">Installation</a></li>
+          <li><a href="#getting-started">Getting Started</a></li>
+          <li><a href="#data-files">Creating Data Files</a></li>
+          <li><a href="#quality-input">Quality Input for AI</a></li>
+          <li><a href="#field-mapping">Field Mapping</a></li>
+          <li><a href="#limitations">Limitations</a></li>
+        </ul>
+      </nav>
+
+      <div class="section">
+        <h2 id="installation">Installation</h2>
+        <h3>Browser Extension</h3>
+        <ol>
+          <li>Download the the ZIP file to a folder on your computer from the latest release at <a href="https://github.com/haroldmei/formmasterpro.github.io/releases">GitHub Releases</a></li>
+          <li>In Chrome, navigate to <code>chrome://extensions</code></li>
+          <li>Enable "Developer mode" in the top-right corner</li>
+          <li>Drag the downloaded zip file into the browser</li>
+          <li>The FormMasterPro icon will appear in your browser's extension toolbar</li>
+        </ol>
+
+        <h3>System Requirements</h3>
+        <ul>
+          <li><strong>Operating System:</strong> Windows 10+ (preferred), macOS, or Linux</li>
+          <li><strong>Browser:</strong> Chrome, Edge, or Brave (Chromium-based)</li>
+        </ul>
+
+        <div class="note-box">
+          <p><strong>Important:</strong> FormMasterPro is designed to work with HTML forms on websites only. It does not fill out PDF forms or other document-based forms. It extracts data from PDF and DOCX files to fill HTML web forms.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="getting-started">Getting Started</h2>
+        
+        <p>The extension UI contains two parts, the <strong>Login/Logout</strong> is on the top right popup dialog, the <strong>Load Data</strong> and <strong>Auto Fill</strong> on the bottom left popup menu.</p>
+        <div class="screenshot-container">
+          <img src="assets/mainui.png" alt="FormMasterPro user interface showing the login panel, data loading button, and form auto-fill functionality" class="screenshot">
+          <p class="caption">FormMasterPro main interface showing the login, load data, and auto-fill functions</p>
+        </div>
+
+        <h3>Main functions</h3>
+        <ol>
+          <li>User Login/Logout</li>
+          <li>Load Data</li>
+          <li>Auto Fill</li>
+        </ol>
+
+        <h3>Basic Usage</h3>
+        <ol>
+          <li>Navigate to a webpage with a form you want to fill out</li>
+          <li>Click the FormMasterPro icon in your browser toolbar</li>
+          <li>Login with your gmail accont, or creat an account.</li>
+          <li>Click "Load Data File" to import data from a single file, or "Load Folder" (premium subscribers only) to import data from multiple files</li>
+          <li>Click "Auto Fill Form" to automatically populate the form fields. This button is also on the bottom left pop up menu</li>
+        </ol>
+
+        <h3>Supported File Formats</h3>
+        <ul>
+          <li><strong>DOCX:</strong> Microsoft Word documents</li>
+          <li><strong>PDF:</strong> Portable Document Format files</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2 id="data-files">Creating Data Files</h2>
+        <p>FormMasterPro can extract data from different file formats to populate HTML forms on websites. Here's how to prepare them:</p>
+
+        <h3>DOCX Documents</h3>
+        <p>FormMasterPro can extract data from structured DOCX documents, including:</p>
+        <ul>
+          <li>Regular paragraphs of text</li>
+          <li>Tables with labeled rows and columns</li>
+          <li>Formatted sections with headings</li>
+        </ul>
+        <p>The extension will attempt to intelligently parse the document structure and extract relevant information.</p>
+
+        <h3>PDF Documents</h3>
+        <p>FormMasterPro can extract data from PDF files, including:</p>
+        <ul>
+          <li>Text content from all pages</li>
+          <li>Form fields and their values</li>
+          <li>Tables and structured content</li>
+        </ul>
+        <p>For best results, ensure your PDF contains selectable text rather than scanned images.</p>
+        <p><strong>Note:</strong> While FormMasterPro extracts data from PDF files, it cannot fill out PDF forms directly. It uses the extracted data to fill HTML forms on websites.</p>
+        
+        <h3>Loading Data from Folders <span class="premium-badge">Premium</span></h3>
+        <p><strong>Note: This feature is only available for premium subscribers.</strong></p>
+        <p>FormMasterPro offers premium subscribers the ability to load multiple files at once from a folder:</p>
+        <ul>
+          <li>Click "Load Folder" and select a folder containing your documents</li>
+          <li>All supported files (PDF and DOCX) in the folder will be loaded into memory</li>
+          <li>The extension merges information from all files to create a comprehensive data source</li>
+          <li>This is especially useful when your information is spread across multiple documents</li>
+        </ul>
+        <p>When using folder extraction:</p>
+        <ol>
+          <li>Organize related documents in a single folder</li>
+          <li>Consider file naming to ensure logical processing order (e.g., "01_personal.pdf", "02_education.docx")</li>
+          <li>Be mindful of memory usage when loading many large files</li>
+          <li>The AI will attempt to resolve any conflicting information across documents</li>
+        </ol>
+        <div class="tip-box">
+          <h4>Pro Tip</h4>
+          <p>For complex applications, organize your documents by category in a single folder. For example, have one document for personal details, another for educational history, and another for employment records.</p>
+        </div>
+
+        <div class="upgrade-box">
+          <h4>Want to access folder loading?</h4>
+          <p>Upgrade to a premium subscription to enable bulk loading of multiple documents from folders, plus additional advanced features.</p>
+          <a href="#" class="button">Upgrade Now</a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="quality-input">Importance of Quality Input for AI</h2>
+        <p>The effectiveness of FormMasterPro's AI-powered form filling depends significantly on the quality of your input data:</p>
+        
+        <h3>Why Quality Matters</h3>
+        <ul>
+          <li><strong>Accuracy:</strong> Higher quality inputs result in more accurate form filling</li>
+          <li><strong>Efficiency:</strong> Well-structured data reduces the need for manual corrections</li>
+          <li><strong>Consistency:</strong> Clean data leads to consistent results across multiple forms</li>
+          <li><strong>Recognition:</strong> Clear formatting helps the AI better recognize data patterns</li>
+        </ul>
+        
+        <h3>Tips for Optimal AI Input</h3>
+        <ol>
+          <li><strong>Use consistent formatting</strong> in your source documents</li>
+          <li><strong>Label data clearly</strong> with descriptive field names</li>
+          <li><strong>Structure information hierarchically</strong> (e.g., personal information, address, education)</li>
+          <li><strong>Avoid abbreviations</strong> when possible, or use standard ones</li>
+          <li><strong>Ensure text is machine-readable</strong> (not embedded in images)</li>
+          <li><strong>Check for typos and formatting errors</strong> before importing</li>
+        </ol>
+        
+        <h3>Example Comparison</h3>
+        <div class="comparison-table">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Poor Quality Input</th>
+                <th>High Quality Input</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John doe, johnd@email 555-1234</td>
+                <td>
+                  <strong>Name:</strong> John Doe<br>
+                  <strong>Email:</strong> john.doe@example.com<br>
+                  <strong>Phone:</strong> (555) 123-4567
+                </td>
+              </tr>
+              <tr>
+                <td>addr: 123 main st anytown</td>
+                <td>
+                  <strong>Address:</strong> 123 Main Street<br>
+                  <strong>City:</strong> Anytown<br>
+                  <strong>State/Province:</strong> California<br>
+                  <strong>Postal Code:</strong> 12345
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <h3>Impact on Form Filling</h3>
+        <p>When FormMasterPro processes high-quality inputs:</p>
+        <ul>
+          <li>Field matching becomes more precise</li>
+          <li>The need for manual mapping is reduced</li>
+          <li>Complex forms can be filled with greater confidence</li>
+          <li>The system learns more effectively from each interaction</li>
+        </ul>
+        
+        <div class="tip-box">
+          <h4>Pro Tip</h4>
+          <p>For best results, organize your data in a way that mirrors how it would appear on a form. This helps the AI understand the context and relationship between different pieces of information.</p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 id="field-mapping">Field Mapping</h2>
+        <p>Sometimes, you may need to manually map data fields to form fields:</p>
+        <ol>
+          <li>Click "Data Mappings" in the extension popup</li>
+          <li>Use the mapping interface to connect your data fields with form fields</li>
+          <li>Save your mappings for future use</li>
+        </ol>
+        <p>FormMasterPro will remember your mappings for each website, making future form filling even faster.</p>
+      </div>
+      
+      <div class="section">
+        <h2 id="limitations">Limitations</h2>
+        <p>While FormMasterPro is a powerful tool, it's important to understand its current limitations:</p>
+        
+        <ul>
+          <li><strong>HTML Forms Only:</strong> FormMasterPro works exclusively with HTML forms on websites. It cannot fill out PDF forms, desktop application forms, or other document-based forms.</li>
+          <li><strong>Data Extraction vs Form Filling:</strong> The extension extracts data FROM PDFs and DOCX files, but it fills data INTO HTML web forms only.</li>
+          <li><strong>Complex Dynamic Forms:</strong> Some highly complex JavaScript-based forms with unusual implementations may present challenges.</li>
+          <li><strong>Anti-Automation Sites:</strong> Websites with strong anti-automation measures may block or limit FormMasterPro's functionality.</li>
+          <li><strong>Image-Based PDFs:</strong> PDFs containing scanned images without proper OCR text layers may have limited data extraction.</li>
+        </ul>
+        
+        <p>We're continuously working to improve FormMasterPro's capabilities and overcome these limitations in future updates.</p>
+      </div>
+
+      <div class="section">
+        <h2 id="faq">Frequently Asked Questions</h2>
+        <div itemscope itemtype="https://schema.org/FAQPage">
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">What types of forms can FormMasterPro fill?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>FormMasterPro can fill almost any HTML-based web form including job applications, account registrations, contact forms, surveys, and more. It works best with clearly labeled form fields that match common data patterns.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">Is my data secure when using FormMasterPro?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>Yes. FormMasterPro processes your data locally in your browser. Your sensitive information never leaves your computer unless you specifically submit a form. We don't store or access your personal data on our servers.</p>
+              </div>
+            </div>
+          </div>
+          
+          <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+            <h3 itemprop="name">How accurate is the AI form filling?</h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+              <div itemprop="text">
+                <p>FormMasterPro achieves high accuracy rates (typically 85-95%) on most standard forms. The accuracy depends on the quality of your input data and the complexity of the form. Well-structured input documents and clearly labeled form fields yield the best results.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h4>FormMasterPro</h4>
+          <p>Advanced form automation for web applications.</p>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="docs.html">Documentation</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="changelog.html">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Support</h4>
+          <ul>
+            <li><a href="report-bug.html">Report a Bug</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 FormMasterPro. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/script.js"></script>
+</body>
+</html>

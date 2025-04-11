@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University of ABC Application Form - Academic Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <style>
+        body { padding: 20px; }
+        h2 { margin-top: 2rem; color: #375f9d; }
+        h3 { margin-top: 1.5rem; color: #5a7cb6; }
+        .test-section { border: 1px solid #dee2e6; border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+        .form-section { margin-bottom: 30px; }
+        .custom-form-group { margin-bottom: 15px; }
+        .custom-label { font-weight: 600; }
+        .custom-framework-1 { background-color: #f8f9fa; padding: 15px; border-radius: 5px; }
+        .custom-framework-2 { background-color: #e9ecef; padding: 15px; border-radius: 3px; }
+        .ref-number { background: #eee; padding: 3px 8px; border-radius: 3px; margin-right: 5px; font-family: monospace; }
+        
+        /* Fix for Chosen.js dropdown width */
+        .chosen-container {
+            min-width: 250px !important;
+            width: 100% !important;
+        }
+        .chosen-container-single .chosen-single {
+            height: 38px;
+            line-height: 36px;
+            background: #fff;
+        }
+        .chosen-container-active.chosen-with-drop .chosen-single {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        .chosen-container .chosen-drop {
+            width: 100% !important;
+            border-color: #80bdff;
+        }
+        /* Ensure dropdowns in custom frameworks have proper dimensions */
+        .sv-col-md-4 .chosen-container {
+            width: 100% !important;
+        }
+        
+        /* Progress bar styles */
+        .form-progress {
+            margin: 20px 0 40px;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+        }
+        .form-progress:before {
+            content: '';
+            position: absolute;
+            top: 14px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #ccc;
+            z-index: 0;
+        }
+        .form-progress-step {
+            position: relative;
+            z-index: 1;
+            width: 30px;
+            height: 30px;
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 26px;
+            font-weight: bold;
+            color: #ccc;
+        }
+        .form-progress-step.active {
+            border-color: #375f9d;
+            color: #375f9d;
+            background: #e8f0fc;
+        }
+        .form-progress-step.completed {
+            border-color: #375f9d;
+            background: #375f9d;
+            color: #fff;
+        }
+        .form-progress-label {
+            position: absolute;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            color: #666;
+            font-size: 12px;
+            font-weight: normal;
+        }
+        
+        .form-navigation {
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+        .form-navigation-left {
+            text-align: left;
+        }
+        .form-navigation-right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">University of ABC Application Form</h1>
+        <p class="lead">This form collects your information for admission to the Bachelor of Commerce program.</p>
+
+        <div class="alert alert-info">
+            Please complete all sections. Mandatory fields are marked with an asterisk (*).
+        </div>
+        
+        <!-- Multi-step form progress indicator -->
+        <ul class="form-progress">
+            <li class="form-progress-step completed" id="step-1">
+                1
+                <span class="form-progress-label">Personal Details</span>
+            </li>
+            <li class="form-progress-step completed" id="step-2">
+                2
+                <span class="form-progress-label">Additional Information</span>
+            </li>
+            <li class="form-progress-step active" id="step-3">
+                3
+                <span class="form-progress-label">Academic Details</span>
+            </li>
+        </ul>
+
+        <!-- PAGE 3: ACADEMIC DETAILS -->
+        <div id="page-3">
+            <!-- SECTION 7: COMPLEX FORM LAYOUTS -->
+            <div class="test-section">
+                <h2>7. Academic Qualifications</h2>
+                
+                <h3>7.1 English Language Proficiency</h3>
+                <form class="form-section">
+                    <!-- Prepended text -->
+                    <div class="form-group">
+                        <label for="prepend-input">Test Registration Number</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">#</span>
+                            </div>
+                            <input type="text" class="form-control" id="prepend-input" name="prepend-input" placeholder="Registration number" value="123456789">
+                        </div>
+                    </div>
+                    
+                    <!-- Appended text -->
+                    <div class="form-group">
+                        <label for="append-input">IELTS/TOEFL Score</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="append-input" name="append-input" value="7.0">
+                            <div class="input-group-append">
+                                <span class="input-group-text">points</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Both appended and prepended -->
+                    <div class="form-group">
+                        <label for="both-input">Test Fee</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">$</span>
+                            </div>
+                            <input type="text" class="form-control" id="both-input" name="both-input" value="235">
+                            <div class="input-group-append">
+                                <span class="input-group-text">AUD</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                
+                <h3>7.2 Secondary School Studies</h3>
+                <form class="form-section">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="grid-first-name">School Name</label>
+                            <input type="text" class="form-control" id="grid-first-name" name="grid-first-name" value="XXX Grammar School">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="grid-last-name">Year of Completion</label>
+                            <input type="text" class="form-control" id="grid-last-name" name="grid-last-name" value="2022">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="grid-city">City</label>
+                            <input type="text" class="form-control" id="grid-city" name="grid-city" value="XXX">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="grid-state">Country</label>
+                            <select id="grid-state" name="grid-state" class="form-control">
+                                <option value="">Choose...</option>
+                                <option value="AUS">Australia</option>
+                                <option value="CHN" selected>China</option>
+                                <option value="USA">United States</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="grid-zip">ATAR/Score</label>
+                            <input type="text" class="form-control" id="grid-zip" name="grid-zip" value="80+">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- SECTION 8: ACCESSIBILITY FEATURES -->
+            <div class="test-section">
+                <h2>8. Additional Requirements</h2>
+                <form class="form-section">
+                    <!-- Input with aria-label -->
+                    <div class="form-group">
+                        <label for="aria-label-input">Disability Support Requirements</label>
+                        <input type="text" class="form-control" id="aria-label-input" name="aria-label-input" aria-label="Specify any disability support requirements">
+                    </div>
+                    
+                    <!-- Input with aria-describedby -->
+                    <div class="form-group">
+                        <label for="aria-described-input">Accommodation Preferences</label>
+                        <input type="text" class="form-control" id="aria-described-input" name="aria-described-input" aria-describedby="aria-description">
+                        <small id="aria-description" class="form-text text-muted">Specify if you need assistance with finding university accommodation.</small>
+                    </div>
+                    
+                    <!-- Visually hidden label -->
+                    <div class="form-group">
+                        <label for="sr-only-input" class="sr-only">Other Requirements</label>
+                        <input type="text" class="form-control" id="sr-only-input" name="sr-only-input" placeholder="Specify any other requirements">
+                    </div>
+                </form>
+            </div>
+
+            <h2>References</h2>
+            <p>This document demonstrates a university admission form for testing FormMasterPro's extraction and filling capabilities.</p>
+            <ul>
+                <li><span class="ref-number">1.1</span> Personal details including name, contact information</li>
+                <li><span class="ref-number">3.2</span> Title and country dropdowns</li>
+                <li><span class="ref-number">4.3</span> Yes/No questions for application status</li>
+                <li><span class="ref-number">6.1</span> Scholarship information selections</li>
+            </ul>
+
+            <!-- Page 3 Navigation Buttons -->
+            <div class="form-navigation">
+                <div class="form-navigation-left">
+                    <a href="collections-page2.html" class="btn btn-secondary">Previous</a>
+                </div>
+                <div class="form-navigation-right">
+                    <button type="button" class="btn btn-success" id="submit-form">Submit Application</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to initialize the enhanced selects -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chosen-js@1.8.7/chosen.jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        // Initialize enhanced selects after page load
+        $(document).ready(function() {
+            // Handle form submission
+            $('#submit-form').on('click', function() {
+                alert('Form submitted successfully!');
+                // Navigate back to the first page after form submission
+                window.location.href = "collections.html";
+            });
+        });
+    </script>
+</body>
+</html>
