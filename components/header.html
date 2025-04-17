@@ -1,67 +1,8 @@
-<div class="container header-content">
-  <a href="index.html" class="logo">FormMasterPro</a>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="features.html">Features</a></li>
-      <li><a href="docs.html">Documentation</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="#" id="loginButton" class="login-btn">Login</a></li>
-    </ul>
-  </nav>
-</div>
-
-<script src="../assets/auth.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', async function() {
-    // Initialize the auth service
-    const isAuthenticated = await auth0Service.init();
-    updateLoginButton(isAuthenticated);
-    
-    // Handle login button click
-    document.getElementById('loginButton').addEventListener('click', async function(e) {
-      e.preventDefault();
-      
-      console.log('Login button clicked');
-      
-      if (await auth0Service.isAuthenticated()) {
-        // If authenticated, log out
-        await auth0Service.logout();
-        updateLoginButton(false);
-      } else {
-        // If not authenticated, log in
-        try {
-          await auth0Service.login();
-          // The page will redirect to Auth0, so we don't need to update button here
-        } catch (error) {
-          console.error('Login failed:', error);
-          alert('Login failed. Please try again.');
-        }
-      }
-    });
-  });
-  
-  // Function to update login button text based on authentication status
-  async function updateLoginButton(isAuthenticated) {
-    const loginButton = document.getElementById('loginButton');
-    
-    if (isAuthenticated) {
-      try {
-        // Get user profile to show user info
-        const userProfile = await auth0Service.getUserProfile();
-        loginButton.textContent = `Logout (${userProfile.name || userProfile.email})`;
-        loginButton.classList.add('logged-in');
-      } catch (error) {
-        loginButton.textContent = 'Logout';
-        loginButton.classList.add('logged-in');
-      }
-    } else {
-      loginButton.textContent = 'Login';
-      loginButton.classList.remove('logged-in');
-    }
-  }
-</script>
+<noscript>
+  <div style="color:red;background:#ffeeee;padding:10px;margin:5px;border:1px solid red;">
+    JavaScript is disabled in your browser. Some features may not work correctly.
+  </div>
+</noscript>
 
 <style>
   .login-btn {
@@ -70,6 +11,10 @@
     padding: 8px 16px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
   }
   
   .login-btn:hover {
@@ -84,4 +29,108 @@
   .login-btn.logged-in:hover {
     background-color: #218838;
   }
+
+  /* Additional style for visual feedback */
+  .login-btn.clicked {
+    animation: button-pulse 0.3s;
+  }
+  
+  @keyframes button-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+  }
 </style>
+
+<div class="container header-content">
+  <a href="index.html" class="logo">FormMasterPro</a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="docs.html">Documentation</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <form method="get" action="index.html" id="loginForm" style="margin:0;padding:0;display:inline;" 
+              onsubmit="return false;">
+          <!-- Fixed onclick handler to correctly reference the button element -->
+          <button type="button" id="loginButton" class="login-btn" 
+                  onclick="
+                    var loginBtn = this; // Store reference to button before entering function
+                    (function(event, btn) {
+                      if(event) event.preventDefault(); 
+                      console.log('Login clicked (self-contained)');
+                      
+                      // Visual feedback using the passed button reference
+                      if(btn) {
+                        btn.classList.add('clicked');
+                        setTimeout(function() { 
+                          if(btn) btn.classList.remove('clicked');
+                        }, 300);
+                      }
+                      
+                      // Try to use auth service if it exists
+                      if (typeof window.auth0Service !== 'undefined') {
+                        console.log('Auth service found, proceeding with auth');
+                        window.auth0Service.isAuthenticated()
+                          .then(function(isAuth) {
+                            if (isAuth) {
+                              console.log('User is authenticated, logging out');
+                              window.auth0Service.logout();
+                            } else {
+                              console.log('User is not authenticated, logging in');
+                              window.auth0Service.login();
+                            }
+                          })
+                          .catch(function(err) {
+                            console.error('Auth error:', err);
+                            alert('Authentication error. Please try again.');
+                          });
+                      } else {
+                        console.error('Auth service not available');
+                        alert('Authentication service not available');
+                      }
+                    })(event, loginBtn);
+                    return false;">
+            Login
+          </button>
+          <input type="hidden" name="action" value="login">
+        </form>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<script src="assets/auth.js"></script>
+
+<!-- Add a direct script at the end to initialize auth once it's loaded -->
+<script>
+  // Attempt to initialize auth directly after loading
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      if (typeof window.auth0Service !== 'undefined') {
+        console.log('Attempting to initialize auth0Service');
+        try {
+          window.auth0Service.init()
+            .then(function(isAuth) {
+              console.log('Auth initialized, authenticated:', isAuth);
+              // Update button if authenticated
+              if (isAuth) {
+                var btn = document.getElementById('loginButton');
+                if (btn) {
+                  btn.classList.add('logged-in');
+                  btn.textContent = 'Logout';
+                }
+              }
+            })
+            .catch(function(err) {
+              console.error('Auth init error:', err);
+            });
+        } catch (e) {
+          console.error('Error during auth init:', e);
+        }
+      }
+    }, 500); // Short delay to ensure auth.js has loaded
+  });
+</script>
