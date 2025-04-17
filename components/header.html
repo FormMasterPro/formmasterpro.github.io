@@ -1,0 +1,87 @@
+<div class="container header-content">
+  <a href="index.html" class="logo">FormMasterPro</a>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="docs.html">Documentation</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="#" id="loginButton" class="login-btn">Login</a></li>
+    </ul>
+  </nav>
+</div>
+
+<script src="../assets/auth.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async function() {
+    // Initialize the auth service
+    const isAuthenticated = await auth0Service.init();
+    updateLoginButton(isAuthenticated);
+    
+    // Handle login button click
+    document.getElementById('loginButton').addEventListener('click', async function(e) {
+      e.preventDefault();
+      
+      console.log('Login button clicked');
+      
+      if (await auth0Service.isAuthenticated()) {
+        // If authenticated, log out
+        await auth0Service.logout();
+        updateLoginButton(false);
+      } else {
+        // If not authenticated, log in
+        try {
+          await auth0Service.login();
+          // The page will redirect to Auth0, so we don't need to update button here
+        } catch (error) {
+          console.error('Login failed:', error);
+          alert('Login failed. Please try again.');
+        }
+      }
+    });
+  });
+  
+  // Function to update login button text based on authentication status
+  async function updateLoginButton(isAuthenticated) {
+    const loginButton = document.getElementById('loginButton');
+    
+    if (isAuthenticated) {
+      try {
+        // Get user profile to show user info
+        const userProfile = await auth0Service.getUserProfile();
+        loginButton.textContent = `Logout (${userProfile.name || userProfile.email})`;
+        loginButton.classList.add('logged-in');
+      } catch (error) {
+        loginButton.textContent = 'Logout';
+        loginButton.classList.add('logged-in');
+      }
+    } else {
+      loginButton.textContent = 'Login';
+      loginButton.classList.remove('logged-in');
+    }
+  }
+</script>
+
+<style>
+  .login-btn {
+    background-color: #007bff;
+    color: white !important;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+  }
+  
+  .login-btn.logged-in {
+    background-color: #28a745;
+  }
+  
+  .login-btn.logged-in:hover {
+    background-color: #218838;
+  }
+</style>
