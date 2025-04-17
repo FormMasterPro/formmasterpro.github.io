@@ -1,6 +1,6 @@
 # FormMasterPro Project Website
 
-This folder contains the GitHub Pages website for the FormMasterPro project. The site is hosted at [https://haroldmei.github.io/form-master-pro](https://haroldmei.github.io/form-master-pro).
+This folder contains the GitHub Pages website for the FormMasterPro project. The site is hosted at [https://www.formmasterpro.com](https://www.formmasterpro.com).
 
 ## Enabling GitHub Pages
 
