@@ -1,5 +1,22 @@
 User-agent: *
 Allow: /
-Disallow: /assets/
+Disallow: /assets/private/
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /drafts/
+
+# Allow all bots to access images and public assets
+Allow: /assets/images/
+Allow: /assets/videos/
+Allow: /assets/public/
+
+# Block crawling of author profile images to save crawl budget
+Disallow: /assets/images/authors/
+
+# Important pages for SEO prioritization
+Allow: /index.html
+Allow: /features.html
+Allow: /docs.html
+Allow: /faq.html
 
 Sitemap: https://www.formmasterpro.com/sitemap.xml

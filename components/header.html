@@ -5,12 +5,12 @@
 </noscript>
 
 <!-- Enhanced SEO Meta Tags for AI Browser Assistants -->
-<meta name="description" content="FormMasterPro uses AI technology to automate form filling on websites by analyzing page structure. Our roadmap includes expanded browser assistant capabilities for web navigation and interactive tasks.">
-<meta name="keywords" content="form filling automation, AI browser assistant, web form automation, visual processing, DOM analysis, HTML form filling, web task automation, online form assistant">
+<meta name="description" content="FormMasterPro uses AI technology to automate form filling on websites by analyzing page structure and visual elements. Save hours of repetitive work with our intelligent browser assistant.">
+<meta name="keywords" content="form filling automation, AI browser assistant, web form automation, visual processing, DOM analysis, HTML form filling, web task automation, online form assistant, hyper-personalization, generative AI, decision intelligence">
 
 <!-- Open Graph tags for better social sharing -->
 <meta property="og:title" content="FormMasterPro - AI-Powered Form Filling Automation">
-<meta property="og:description" content="FormMasterPro automates web form filling using AI technology that understands both visual and structural data. Our development roadmap includes expanded browser assistant capabilities.">
+<meta property="og:description" content="FormMasterPro automates web form filling using AI technology that understands both visual and structural data. Save hours of repetitive form filling with our intelligent assistant.">
 
 <!-- Schema.org markup for search engines -->
 <script type="application/ld+json">
@@ -20,18 +20,101 @@
   "name": "FormMasterPro",
   "applicationCategory": "BrowserApplication",
   "operatingSystem": "Windows, macOS, Linux (Chrome-based browsers)",
-  "description": "AI-powered form filling tool that analyzes HTML/DOM structure to automate web forms. Future versions will expand to broader web task automation including navigation and interactive tasks.",
+  "description": "AI-powered form filling tool that analyzes HTML/DOM structure and visual elements to automate web forms. Future versions will expand to broader web task automation including navigation and interactive tasks.",
   "featureList": [
     "Automated form filling",
     "Document data extraction",
     "HTML/DOM processing",
-    "Intelligent field mapping"
+    "Intelligent field mapping",
+    "Visual pattern recognition",
+    "Contextual understanding"
   ],
-  "keywords": "AI browser assistant, form automation, web form filling"
+  "keywords": "AI browser assistant, form automation, web form filling, hyper-personalization",
+  "offers": {
+    "@type": "Offer",
+    "price": "0.00",
+    "priceCurrency": "USD"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "156"
+  }
 }
 </script>
 
 <style>
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 36px;
+    margin-right: 0.5rem;
+  }
+
+  .tagline {
+    font-size: 0.9rem;
+    color: #666;
+    margin-left: 1rem;
+  }
+
+  nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+    margin-left: 1.5rem;
+  }
+
+  nav a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: #4CAF50;
+  }
+
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover::after,
+  nav a.active::after {
+    width: 100%;
+  }
+
   .login-btn {
     background-color: #007bff;
     color: white !important;
@@ -57,21 +140,59 @@
     background-color: #218838;
   }
 
-  /* Additional style for visual feedback */
-  .login-btn.clicked {
-    animation: button-pulse 0.3s;
+  .mobile-nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1.5rem;
   }
-  
-  @keyframes button-pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(0.95); }
-    100% { transform: scale(1); }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-wrap: wrap;
+    }
+
+    .mobile-nav-toggle {
+      display: block;
+    }
+
+    nav {
+      width: 100%;
+      margin-top: 1rem;
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.3s ease;
+    }
+
+    nav.show {
+      max-height: 300px;
+    }
+
+    nav ul {
+      flex-direction: column;
+    }
+
+    nav li {
+      margin: 0.5rem 0;
+    }
   }
 </style>
 
 <div class="container header-content">
-  <a href="index.html" class="logo">FormMasterPro</a>
-  <span class="tagline">Intelligent Form Filling Assistant</span>
+  <div class="logo-container">
+    <a href="index.html" class="logo">
+      <img src="assets/images/favicon.png" alt="FormMasterPro Logo">
+      FormMasterPro
+    </a>
+    <span class="tagline">Intelligent Form Filling Assistant</span>
+  </div>
+  
+  <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation">
+    ☰
+  </button>
+  
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -79,6 +200,7 @@
       <li><a href="docs.html">Documentation</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://chromewebstore.google.com/detail/formmasterpro/cogoehpjjjedifoocbffpfcalkimecbk?hl=en&authuser=0" class="login-btn">Download</a></li>
     </ul>
   </nav>
 </div>
@@ -87,4 +209,5 @@
 <div class="seo-content" style="display:none;">
   <h2>AI Browser Assistant for Form Filling Automation</h2>
   <p>FormMasterPro uses AI technology to understand HTML/DOM structure and visual elements to intelligently fill forms. Our development roadmap includes expanded capabilities for navigating web pages, interacting with online content, and assisting with decision making.</p>
+  <p>Save time and reduce errors by automating your form filling tasks with our intelligent browser extension that learns from your data and preferences.</p>
 </div>

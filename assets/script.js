@@ -40,6 +40,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   
+  // FAQ accordion functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  if (faqItems.length > 0) {
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      
+      question.addEventListener('click', () => {
+        // Close all other FAQ items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+          }
+        });
+        
+        // Toggle current FAQ item
+        item.classList.toggle('active');
+      });
+    });
+    
+    // Open the first FAQ item by default
+    faqItems[0].classList.add('active');
+  }
+  
   // Demo screenshots carousel
   const carousel = document.querySelector('.carousel');
   if (carousel) {
@@ -76,5 +99,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (slides.length > 0) {
       showSlide(0);
     }
+  }
+  
+  // Interactive demo button
+  const demoButton = document.querySelector('.try-demo-button');
+  if (demoButton) {
+    demoButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      alert('Interactive demo coming soon! Please check back later or watch our demo video for now.');
+    });
   }
 });
