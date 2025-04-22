@@ -4,6 +4,33 @@
   </div>
 </noscript>
 
+<!-- Enhanced SEO Meta Tags for AI Browser Assistants -->
+<meta name="description" content="FormMasterPro uses AI technology to automate form filling on websites by analyzing page structure. Our roadmap includes expanded browser assistant capabilities for web navigation and interactive tasks.">
+<meta name="keywords" content="form filling automation, AI browser assistant, web form automation, visual processing, DOM analysis, HTML form filling, web task automation, online form assistant">
+
+<!-- Open Graph tags for better social sharing -->
+<meta property="og:title" content="FormMasterPro - AI-Powered Form Filling Automation">
+<meta property="og:description" content="FormMasterPro automates web form filling using AI technology that understands both visual and structural data. Our development roadmap includes expanded browser assistant capabilities.">
+
+<!-- Schema.org markup for search engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FormMasterPro",
+  "applicationCategory": "BrowserApplication",
+  "operatingSystem": "Windows, macOS, Linux (Chrome-based browsers)",
+  "description": "AI-powered form filling tool that analyzes HTML/DOM structure to automate web forms. Future versions will expand to broader web task automation including navigation and interactive tasks.",
+  "featureList": [
+    "Automated form filling",
+    "Document data extraction",
+    "HTML/DOM processing",
+    "Intelligent field mapping"
+  ],
+  "keywords": "AI browser assistant, form automation, web form filling"
+}
+</script>
+
 <style>
   .login-btn {
     background-color: #007bff;
@@ -44,6 +71,7 @@
 
 <div class="container header-content">
   <a href="index.html" class="logo">FormMasterPro</a>
+  <span class="tagline">Intelligent Form Filling Assistant</span>
   <nav>
     <ul>
       <li><a href="index.html">Home</a></li>
@@ -51,85 +79,12 @@
       <li><a href="docs.html">Documentation</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <!--<li>
-        <form method="get" action="index.html" id="loginForm" style="margin:0;padding:0;display:inline;" 
-              onsubmit="return false;">
-          <button type="button" id="loginButton" class="login-btn" 
-                  onclick="
-                    var loginBtn = this; // Store reference to button before entering function
-                    (function(event, btn) {
-                      if(event) event.preventDefault(); 
-                      console.log('Login clicked (self-contained)');
-                      
-                      // Visual feedback using the passed button reference
-                      if(btn) {
-                        btn.classList.add('clicked');
-                        setTimeout(function() { 
-                          if(btn) btn.classList.remove('clicked');
-                        }, 300);
-                      }
-                      
-                      // Try to use auth service if it exists
-                      if (typeof window.auth0Service !== 'undefined') {
-                        console.log('Auth service found, proceeding with auth');
-                        window.auth0Service.isAuthenticated()
-                          .then(function(isAuth) {
-                            if (isAuth) {
-                              console.log('User is authenticated, logging out');
-                              window.auth0Service.logout();
-                            } else {
-                              console.log('User is not authenticated, logging in');
-                              window.auth0Service.login();
-                            }
-                          })
-                          .catch(function(err) {
-                            console.error('Auth error:', err);
-                            alert('Authentication error. Please try again.');
-                          });
-                      } else {
-                        console.error('Auth service not available');
-                        alert('Authentication service not available');
-                      }
-                    })(event, loginBtn);
-                    return false;">
-            Login
-          </button>
-          <input type="hidden" name="action" value="login">
-        </form>
-      </li>-->
     </ul>
   </nav>
 </div>
 
-<script src="assets/auth.js"></script>
-
-<!-- Add a direct script at the end to initialize auth once it's loaded -->
-<script>
-  // Attempt to initialize auth directly after loading
-  document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(function() {
-      if (typeof window.auth0Service !== 'undefined') {
-        console.log('Attempting to initialize auth0Service');
-        try {
-          window.auth0Service.init()
-            .then(function(isAuth) {
-              console.log('Auth initialized, authenticated:', isAuth);
-              // Update button if authenticated
-              if (isAuth) {
-                var btn = document.getElementById('loginButton');
-                if (btn) {
-                  btn.classList.add('logged-in');
-                  btn.textContent = 'Logout';
-                }
-              }
-            })
-            .catch(function(err) {
-              console.error('Auth init error:', err);
-            });
-        } catch (e) {
-          console.error('Error during auth init:', e);
-        }
-      }
-    }, 500); // Short delay to ensure auth.js has loaded
-  });
-</script>
+<!-- Hidden SEO content -->
+<div class="seo-content" style="display:none;">
+  <h2>AI Browser Assistant for Form Filling Automation</h2>
+  <p>FormMasterPro uses AI technology to understand HTML/DOM structure and visual elements to intelligently fill forms. Our development roadmap includes expanded capabilities for navigating web pages, interacting with online content, and assisting with decision making.</p>
+</div>
