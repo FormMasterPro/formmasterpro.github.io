@@ -79,6 +79,8 @@ nav a:hover, nav a.active {
   text-align: center;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
+  will-change: transform; /* Hardware acceleration for hero section */
+  contain: layout; /* Improve rendering performance */
 }
 
 .hero h1 {
@@ -90,6 +92,13 @@ nav a:hover, nav a.active {
   font-size: 1.2rem;
   max-width: 800px;
   margin: 0 auto 2rem;
+  text-rendering: optimizeSpeed; /* Prioritize render speed over refinement */
+}
+
+p.hero-description {
+  font-display: swap;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 1.2em;
 }
 
 .cta-buttons {
@@ -142,6 +151,7 @@ nav a:hover, nav a.active {
   min-height: 200px;
   display: flex;
   flex-direction: column;
+  contain: content; /* Isolate this content from the rest of the page layout */
 }
 
 .feature-card h3 {
@@ -161,6 +171,8 @@ nav a:hover, nav a.active {
   height: 0;
   max-width: 800px;
   margin: 0 auto;
+  content-visibility: auto; /* Defer offscreen content */
+  contain-intrinsic-size: auto 300px; /* Preserve layout space while deferred */
 }
 
 .video-container iframe {
@@ -313,6 +325,8 @@ footer a:hover {
 .demo-video {
   flex: 1;
   min-width: 300px;
+  content-visibility: auto; /* Defer offscreen content */
+  contain-intrinsic-size: auto 300px; /* Preserve layout space while deferred */
 }
 
 .demo-video video {
@@ -357,6 +371,7 @@ footer a:hover {
   padding: 1.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  contain: content; /* Isolate this content from the rest of the page layout */
 }
 
 .testimonial-card:hover {
@@ -395,6 +410,8 @@ footer a:hover {
   border-radius: 50%;
   object-fit: cover;
   margin-right: 1rem;
+  content-visibility: auto; /* Defer offscreen content */
+  contain-intrinsic-size: auto 300px; /* Preserve layout space while deferred */
 }
 
 .author-info h4 {
@@ -552,6 +569,14 @@ img {
   height: auto;
 }
 
+img.critical {
+  loading: eager; /* Force priority loading for critical images */
+}
+
+img:not(.critical) {
+  loading: lazy; /* Lazy load non-critical images */
+}
+
 /* Font display strategy to prevent text layout shifts */
 @font-face {
   font-family: 'System Font';
@@ -562,6 +587,16 @@ img {
        local('Segoe UI'), local('Roboto'), local('Oxygen'), local('Ubuntu'), 
        local('Cantarell'), local('Fira Sans'), local('Droid Sans'), local('Helvetica Neue'), 
        sans-serif;
+}
+
+@media screen {
+  @font-face {
+    font-family: 'Segoe UI';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap; /* Ensures text remains visible during font loading */
+    src: local('Segoe UI');
+  }
 }
 
 /* Prevent layout shifts from dynamically loaded content */
