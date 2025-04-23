@@ -1,15 +1,25 @@
 // Main JavaScript for FormMasterPro website
 
+/**
+ * Initialize components when DOM is loaded
+ */
 document.addEventListener('DOMContentLoaded', function() {
-  // Import SEO helper functions if they exist
+  // Update all links to use consistent domain
   if (typeof updatePageLinks === 'function') {
-    // Update all links to use consistent domain format
     updatePageLinks();
   }
   
-  // Initialize other scripts and functionality
+  // Initialize other components
   initializeNavigation();
   setupFormInteractions();
+  
+  // Deferred analytics loading - use 'idle', 'defer', or 'interaction'
+  if (window.analyticsLoader) {
+    window.analyticsLoader.init('idle');
+  }
+
+  // Track important conversion events
+  setupEventTracking();
 
   // Highlight current page in navigation
   const currentLocation = window.location.pathname;
@@ -120,3 +130,36 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+
+/**
+ * Setup tracking for important user interactions
+ */
+function setupEventTracking() {
+  // Track downloads
+  document.querySelectorAll('a[href*="chromewebstore.google.com"]').forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.analyticsLoader) {
+        window.analyticsLoader.trackEvent('Conversion', 'Download', 'Chrome Extension');
+      }
+    });
+  });
+  
+  // Track documentation views
+  if (window.location.pathname.includes('docs.html')) {
+    if (window.analyticsLoader) {
+      window.analyticsLoader.trackEvent('Engagement', 'View', 'Documentation');
+    }
+  }
+  
+  // Track demo views
+  const demoButtons = document.querySelectorAll('.try-demo-button');
+  if (demoButtons.length > 0) {
+    demoButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        if (window.analyticsLoader) {
+          window.analyticsLoader.trackEvent('Engagement', 'Demo', 'Interactive Demo');
+        }
+      });
+    });
+  }
+}

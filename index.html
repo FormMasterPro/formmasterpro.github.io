@@ -60,14 +60,8 @@
     }
   </style>
   
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0087JV38VS"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0087JV38VS');
-  </script>
+  <!-- Remove synchronous Google Analytics script and replace with optimized version -->
+  <!-- Analytics will be loaded by analytics-loader.js -->
   
   <!-- Open Graph / Social Media -->
   <meta property="og:title" content="FormMasterPro: AI-Powered Form Filling Assistant">
@@ -266,8 +260,10 @@
     <!-- The footer content will be loaded from components/footer.html -->
   </footer>
 
-  <script src="assets/script.js"></script>
+  <!-- Load essential scripts first -->
   <script src="assets/components.js"></script>
-  <script src="assets/auth.js"></script>
+  <script src="assets/js/analytics-loader.js" defer></script>
+  <script src="assets/script.js" defer></script>
+  <script src="assets/auth.js" defer></script>
 </body>
 </html>
