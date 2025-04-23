@@ -1,6 +1,16 @@
 // Main JavaScript for FormMasterPro website
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Import SEO helper functions if they exist
+  if (typeof updatePageLinks === 'function') {
+    // Update all links to use consistent domain format
+    updatePageLinks();
+  }
+  
+  // Initialize other scripts and functionality
+  initializeNavigation();
+  setupFormInteractions();
+
   // Highlight current page in navigation
   const currentLocation = window.location.pathname;
   const navLinks = document.querySelectorAll('nav a');

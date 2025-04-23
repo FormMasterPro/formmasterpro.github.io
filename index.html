@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FormMasterPro: AI-Powered Form Filling Assistant | Save Time on Web Forms</title>
+  
+  <!-- Fast client-side redirect in case server redirect fails -->
+  <script>
+    // Only redirect if the domain doesn't match our preferred format
+    if (window.location.hostname === 'formmasterpro.com' && window.location.hostname !== 'www.formmasterpro.com') {
+      window.location.replace('https://www.formmasterpro.com' + window.location.pathname + window.location.search);
+    }
+  </script>
+  
   <meta name="description" content="FormMasterPro is an AI-powered browser assistant that intelligently fills online forms by analyzing both visual elements and page structure. Save hours on repetitive form filling with our advanced AI solution.">
   <meta name="keywords" content="form automation, AI browser assistant, form filling, document processing, auto-fill forms, web task automation, hyper-personalization, generative AI, decision intelligence">
   <meta name="author" content="FormMasterPro">
@@ -162,18 +171,6 @@
           <p>Experience how FormMasterPro works with our interactive demo. See how our AI identifies form fields and auto-fills them accurately.</p>
           <a href="#" class="button try-demo-button">Try Interactive Demo</a>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="video-section">
-    <div class="container">
-      <div class="video-container">
-        <video width="560" height="315" controls poster="assets/videos/demo-poster.png">
-          <source src="assets/videos/formmaster-pro-tutorial.mp4" type="video/mp4">
-          <source src="assets/videos/formmaster-pro-tutorial.webm" type="video/webm">
-          Your browser does not support the video tag.
-        </video>
       </div>
     </div>
   </section>
