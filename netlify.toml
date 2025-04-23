@@ -1,0 +1,38 @@
+[build]
+  publish = "."
+  
+[[headers]]
+  # Define cache policy for CSS files
+  for = "/assets/styles.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Define cache policy for JavaScript files
+  for = "/assets/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  # Define cache policy for analytics
+  for = "/*/analytics-loader.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Define cache policy for media files
+  for = "/*/videos/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+[[headers]]
+  # Define cache policy for images
+  for = "/*/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Define cache policy for HTML
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
