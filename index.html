@@ -12,6 +12,45 @@
   <link rel="stylesheet" href="assets/styles.css">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   
+  <!-- Preload critical assets to prevent layout shifts -->
+  <link rel="preload" href="assets/images/favicon.png" as="image">
+  <link rel="preload" href="assets/styles.css" as="style">
+  
+  <style>
+    /* Add styles to prevent layout shifts */
+    .hero {
+      min-height: 300px; /* Reserve space for hero content */
+    }
+    
+    .hero .container {
+      min-height: 200px;
+    }
+    
+    /* Reserve space for dynamic content */
+    .features-grid {
+      min-height: 300px;
+    }
+    
+    /* Prevent image-based layout shifts */
+    img, video {
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: attr(width) / attr(height);
+    }
+    
+    /* Reserve space for video */
+    .video-container {
+      aspect-ratio: 16 / 9;
+      background-color: #f5f5f5;
+      margin-bottom: 1rem;
+    }
+    
+    /* Apply aspect ratio for images */
+    video[poster] {
+      aspect-ratio: 16 / 9;
+    }
+  </style>
+  
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-0087JV38VS"></script>
   <script>
@@ -123,6 +162,18 @@
           <p>Experience how FormMasterPro works with our interactive demo. See how our AI identifies form fields and auto-fills them accurately.</p>
           <a href="#" class="button try-demo-button">Try Interactive Demo</a>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <div class="container">
+      <div class="video-container">
+        <video width="560" height="315" controls poster="assets/videos/demo-poster.png">
+          <source src="assets/videos/formmaster-pro-tutorial.mp4" type="video/mp4">
+          <source src="assets/videos/formmaster-pro-tutorial.webm" type="video/webm">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </section>

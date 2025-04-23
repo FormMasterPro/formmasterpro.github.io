@@ -10,6 +10,10 @@
   --border-color: #e0e0e0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
@@ -20,9 +24,11 @@ body {
 }
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 /* Header */
@@ -66,7 +72,10 @@ nav a:hover, nav a.active {
 
 /* Hero Section */
 .hero {
-  padding: 4rem 0;
+  padding: 60px 0;
+  background-color: var(--panel-bg, #f8f9fa);
+  min-height: 300px;
+  position: relative;
   text-align: center;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
@@ -130,6 +139,9 @@ nav a:hover, nav a.active {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
 }
 
 .feature-card h3 {
@@ -523,4 +535,36 @@ footer a:hover {
   .testimonials-grid {
     grid-template-columns: 1fr;
   }
+  
+  .hero {
+    min-height: 250px;
+  }
+  
+  .feature-card {
+    min-height: 180px;
+  }
+}
+
+/* Images with explicit dimensions */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Font display strategy to prevent text layout shifts */
+@font-face {
+  font-family: 'System Font';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap; /* Use 'swap' to prevent text layout shifts */
+  src: local('System UI'), local('-apple-system'), local('BlinkMacSystemFont'), 
+       local('Segoe UI'), local('Roboto'), local('Oxygen'), local('Ubuntu'), 
+       local('Cantarell'), local('Fira Sans'), local('Droid Sans'), local('Helvetica Neue'), 
+       sans-serif;
+}
+
+/* Prevent layout shifts from dynamically loaded content */
+.dynamic-content {
+  min-height: 100px;
 }

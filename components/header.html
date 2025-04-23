@@ -49,6 +49,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
+    min-height: 60px; /* Reserve space for header */
+    position: relative;
   }
 
   .logo-container {
@@ -67,6 +69,7 @@
 
   .logo img {
     height: 36px;
+    width: 36px; /* Add explicit width to match height */
     margin-right: 0.5rem;
   }
 
@@ -74,6 +77,9 @@
     font-size: 0.9rem;
     color: #666;
     margin-left: 1rem;
+    display: inline-block;
+    min-height: 1.2rem;
+    min-width: 200px; /* Reserve space for tagline to prevent shifts */
   }
 
   nav ul {
@@ -115,6 +121,10 @@
     width: 100%;
   }
 
+  nav {
+    min-height: 40px; /* Ensure nav has a minimum height to prevent shifts */
+  }
+
   .login-btn {
     background-color: #007bff;
     color: white !important;
@@ -152,6 +162,7 @@
   @media (max-width: 768px) {
     .header-content {
       flex-wrap: wrap;
+      min-height: 100px; /* Additional styles to prevent mobile layout shifts */
     }
 
     .mobile-nav-toggle {
@@ -183,7 +194,7 @@
 <div class="container header-content">
   <div class="logo-container">
     <a href="index.html" class="logo">
-      <img src="assets/images/favicon.png" alt="FormMasterPro Logo">
+      <img src="assets/images/favicon.png" alt="FormMasterPro Logo" width="36" height="36">
       FormMasterPro
     </a>
     <span class="tagline">Intelligent Form Filling Assistant</span>
