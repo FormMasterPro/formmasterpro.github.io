@@ -104,3 +104,14 @@ RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
     Header unset ETag
 </IfModule>
 FileETag None
+
+# Error handling for missing video files
+<IfModule mod_rewrite.c>
+  # Check if the requested video file exists
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} \.(mp4|webm)$ [NC]
+  
+  # Redirect to the fallback video file
+  RewriteRule ^videos/(.*)\.mp4$ /videos/fallback-video.mp4 [L,R=302]
+  RewriteRule ^videos/(.*)\.webm$ /videos/fallback-video.webm [L,R=302]
+</IfModule>

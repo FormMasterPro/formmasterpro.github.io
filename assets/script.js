@@ -1,6 +1,99 @@
 // Main JavaScript for FormMasterPro website
 
 /**
+ * Initialize navigation functionality
+ * Sets up mobile navigation toggle and active states
+ */
+function initializeNavigation() {
+  const navLinks = document.querySelectorAll('nav a');
+  const currentPath = window.location.pathname;
+  
+  // Set active class for current page
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath || 
+        (href === '/index.html' && (currentPath === '/' || currentPath === ''))) {
+      link.classList.add('active');
+    }
+    
+    // Add click effect
+    link.addEventListener('click', function(e) {
+      // Only for same-page links
+      if (this.getAttribute('href').startsWith('#')) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          targetElement.scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      }
+    });
+  });
+  
+  // Mobile menu toggle if it exists
+  const menuToggle = document.querySelector('.mobile-menu-toggle');
+  const navMenu = document.querySelector('nav ul');
+  
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+      this.classList.toggle('active');
+    });
+  }
+}
+
+/**
+ * Setup tracking for important user interactions
+ */
+function setupEventTracking() {
+  // Track downloads
+  document.querySelectorAll('a[href*="chromewebstore.google.com"]').forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.analyticsLoader) {
+        window.analyticsLoader.trackEvent('Conversion', 'Download', 'Chrome Extension');
+      }
+    });
+  });
+  
+  // Track documentation views
+  if (window.location.pathname.includes('docs.html')) {
+    if (window.analyticsLoader) {
+      window.analyticsLoader.trackEvent('Engagement', 'View', 'Documentation');
+    }
+  }
+  
+  // Track demo views
+  const demoButtons = document.querySelectorAll('.try-demo-button');
+  if (demoButtons.length > 0) {
+    demoButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        if (window.analyticsLoader) {
+          window.analyticsLoader.trackEvent('Engagement', 'Demo', 'Interactive Demo');
+        }
+      });
+    });
+  }
+}
+
+/**
+ * Setup form interactions
+ */
+function setupFormInteractions() {
+  // Placeholder for form interaction code
+  const forms = document.querySelectorAll('form');
+  if (forms.length > 0) {
+    forms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        // Add form handling logic here
+      });
+    });
+  }
+}
+
+/**
  * Initialize components when DOM is loaded
  */
 document.addEventListener('DOMContentLoaded', function() {
@@ -130,36 +223,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-
-/**
- * Setup tracking for important user interactions
- */
-function setupEventTracking() {
-  // Track downloads
-  document.querySelectorAll('a[href*="chromewebstore.google.com"]').forEach(link => {
-    link.addEventListener('click', function() {
-      if (window.analyticsLoader) {
-        window.analyticsLoader.trackEvent('Conversion', 'Download', 'Chrome Extension');
-      }
-    });
-  });
-  
-  // Track documentation views
-  if (window.location.pathname.includes('docs.html')) {
-    if (window.analyticsLoader) {
-      window.analyticsLoader.trackEvent('Engagement', 'View', 'Documentation');
-    }
-  }
-  
-  // Track demo views
-  const demoButtons = document.querySelectorAll('.try-demo-button');
-  if (demoButtons.length > 0) {
-    demoButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        if (window.analyticsLoader) {
-          window.analyticsLoader.trackEvent('Engagement', 'Demo', 'Interactive Demo');
-        }
-      });
-    });
-  }
-}
