@@ -399,12 +399,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <script>
-                                // Set the initial value of IPQ_APONLNID
-                                $("#IPQ_APONLNID").val("4");
-                                sits_chosen_widget("#IPQ_APONLNID", {});
-                                $('#IPQ_APONLNID').change(check_IPQ_APONLNID);
-                            </script>
+                            <!-- jQuery code moved to document ready handler -->
                         </div>
                     </div>
 
@@ -452,6 +447,19 @@
             // Set some default values
             $('#chosen-select').val('MR').trigger('chosen:updated');
             $('#select2-example').val('BCOM').trigger('change');
+            
+            // Initialize citizenship/residency status dropdown (moved from inline script)
+            $("#IPQ_APONLNID").val("4");
+            
+            // Check if sits_chosen_widget function exists before calling it
+            if (typeof sits_chosen_widget === "function") {
+                sits_chosen_widget("#IPQ_APONLNID", {});
+            }
+            
+            // Check if check_IPQ_APONLNID function exists before binding it
+            if (typeof check_IPQ_APONLNID === "function") {
+                $('#IPQ_APONLNID').change(check_IPQ_APONLNID);
+            }
         });
     </script>
 </body>
